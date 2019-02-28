@@ -1,0 +1,16 @@
+<!--chacune des mises en forme de li correspond à un cas de figure différent: loveIts > 0; loveIts < 0 ou loveIts === 0. Une classe est attribuée en fonction de la situation, la condition est vérifiée par la directive [ngClass]-->
+<!-- La méthode .toLocaleDateString() permet de formatter l'objet Date au format localisé (ici: fr-FR)-->
+<!-- Les icones coeur, calendrier et pouce baissé sont issues du module AngularFontAwesomeModule et sont appelées par la balise <fa name=" "></fa>-->
+
+<li  [ngClass]="{'list-group-item':true,
+                  'list-group-item-success': postLoveIts > 0,
+                  'list-group-item-danger': postLoveIts < 0,
+                  'zero': postLoveIts === 0}">
+  <h3>{{ postTitle }}</h3>
+  <p>{{ postContent }}</p>
+  <span class="love-its"><fa name="heart"></fa> {{ postLoveIts }}</span>
+  <span class="date"><fa name="calendar"></fa> {{ postDate.toLocaleDateString(("fr-FR"), options) }}</span>
+  <br />
+  <button class="vote btn-success" (click)="onIncrement()"><fa name="heart"></fa></button>
+  <button class="vote btn-danger" (click)="onDecrement()"><fa name="thumbs-down"></fa></button>
+</li>
