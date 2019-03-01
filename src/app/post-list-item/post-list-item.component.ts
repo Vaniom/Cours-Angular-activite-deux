@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Post } from '../models/post.model';
+import { ActivatedRoute, Router, Route } from '@angular/router';
+import { PostService } from '../services/post.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-list-item',
@@ -10,22 +14,25 @@ export class PostListItemComponent implements OnInit {
   @Input() postTitle: string;
   @Input() postContent: string;
   @Input() postLoveIts: number;
-  @Input() postDate: Date;
+  @Input() postCreatedAt: number;
 
-// la variable options sera passée à la méthode .toLocaleDateString() pour formattage de l'heure
-options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+  post: Post;
+  posts: Post[];
+  postsSubscription: Subscription;
 
-// la methode onIncrement permet d'augmenter le nombre de loveIts, de 1 unité à chaque passage.
-onIncrement = () => {
-  this.postLoveIts ++;
-}
-// La methode onDecrement permet de diminuer le nombre de loveIts de 1 unité à chaque passage.
-onDecrement = () => {
-  this.postLoveIts --;
-}
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-  }
+    this.post = new Post('', '', 0, Date.now());
+    const id = this.route.snapshot.params['id'];
+      }
 
+  // la methode onIncrement permet d'augmenter le nombre de loveIts, de 1 unité à chaque passage.
+  onIncrement = () => {
+    this.post.loveIts ++;
+  }
+  // La methode onDecrement permet de diminuer le nombre de loveIts de 1 unité à chaque passage.
+  onDecrement = () => {
+    this.post.loveIts --;
+  }
 }

@@ -9,7 +9,7 @@
   <h3>{{ postTitle }}</h3>
   <p>{{ postContent }}</p>
   <span class="love-its"><fa name="heart"></fa> {{ postLoveIts }}</span>
-  <span class="date"><fa name="calendar"></fa> {{ postDate.toLocaleDateString(("fr-FR"), options) }}</span>
+  <span class="date"><fa name="calendar"></fa> {{ postCreatedAt | date: 'd/MM/yyyy à HH:mm:ss' }} </span>
   <br />
   <button class="vote btn-success" (click)="onIncrement()"><fa name="heart"></fa></button>
   <button class="vote btn-danger" (click)="onDecrement()"><fa name="thumbs-down"></fa></button>

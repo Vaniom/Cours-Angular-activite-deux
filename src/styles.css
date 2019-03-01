@@ -27,7 +27,7 @@ h1 {
     width: 200px;
 }
 .content {
-    overflow: scroll;
+    overflow: auto;
 }
 .buffer {
     height: 100px;
@@ -45,11 +45,9 @@ h2 {
 .date {
     float:right;
     font-style: italic;
-    font-size: 0.7rem;
 }
 .love-its {
     float: left;
-    font-size: 0.9rem;
 }
 .vote {
     margin-left: 20px;
