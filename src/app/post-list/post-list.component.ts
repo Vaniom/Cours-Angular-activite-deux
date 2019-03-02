@@ -15,6 +15,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   @Input() postContent: string;
   @Input() postLoveIts: number;
   @Input() postCreatedAt: number;
+  @Input() post: Post;
 
   posts: Post[];
   postsSubscription: Subscription;
