@@ -16,12 +16,13 @@ export class PostListItemComponent implements OnInit {
   @Input() postLoveIts: number;
   @Input() postCreatedAt: number;
   @Input() postElt: Post;
+  @Input()i: number;
 
   post: Post;
   posts: Post[];
   postsSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
     this.post = new Post('', '', 0, Date.now());
@@ -35,5 +36,9 @@ export class PostListItemComponent implements OnInit {
   // La methode onDecrement permet de diminuer le nombre de loveIts de 1 unité à chaque passage.
   onDecrement = () => {
     this.post.loveIts --;
+  }
+
+  onDeletePost(post: Post) {
+    this.postService.removePost(post);
   }
 }
