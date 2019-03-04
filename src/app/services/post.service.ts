@@ -42,4 +42,17 @@ export class PostService {
         this.savePosts();
         this.emitPosts();
     }
+
+    updatePosts(post: Post) {
+        const postIndexToUpdate = this.posts.findIndex(
+            (postEl) => {
+                if (postEl === post) {
+                    return true;
+                }
+            }
+        );
+        this.posts.splice(postIndexToUpdate, 1, post);
+        this.savePosts();
+        this.emitPosts();
+    }
 }

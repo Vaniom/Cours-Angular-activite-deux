@@ -16,7 +16,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   @Input() postLoveIts: number;
   @Input() postCreatedAt: number;
   @Input() post: Post;
-  @Input() i: number;
+  @Input() i: number; // data binding de la valeur de l'index, définit dans post-list.component.html
 
   posts: Post[];
   postsSubscription: Subscription;
@@ -41,6 +41,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   onDeletePost(post: Post) {
     this.postService.removePost(post);
   }
+
   ngOnDestroy() {
     this.postsSubscription.unsubscribe();
   }

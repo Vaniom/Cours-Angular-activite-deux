@@ -8,6 +8,8 @@ import * as firebase from 'firebase';
 })
 export class AppComponent {
   constructor() {
+    // Initialisation du service firebase
+
     const config = {
       apiKey: 'AIzaSyCLdipZ5E1gICc-rA4JVeDv_Zd9ClRDXzA',
       authDomain: 'cours-angular-act-2.firebaseapp.com',
@@ -16,6 +18,7 @@ export class AppComponent {
       storageBucket: 'cours-angular-act-2.appspot.com',
       messagingSenderId: '882173070981'
     };
+
     firebase.initializeApp(config);
   }
 }
