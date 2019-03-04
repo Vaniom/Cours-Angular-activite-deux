@@ -31,5 +31,4 @@ export class NewPostComponent implements OnInit {
     this.postService.createNewPost(newPost);
     this.router.navigate(['/posts']);
   }
-
 }
